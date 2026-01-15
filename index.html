@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beergeel Obstetrics and Gynecology Clinic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2a6e78; /* Teal blue */
+            --secondary: #f8b400; /* Golden yellow */
+            --light: #f0f7f9; /* Light blue background */
+            --dark: #1a4a52; /* Dark teal */
+            --text: #333333;
+            --accent: #e74c3c; /* Red for accents */
+        }
+
+        body {
+            color: var(--text);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation with Background Image */
+        header {
+            background: linear-gradient(rgba(42, 110, 120, 0.85), rgba(42, 110, 120, 0.9)), 
+                        url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin-left: 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 8px 12px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a i {
+            margin-right: 8px;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(42, 110, 120, 0.85), rgba(42, 110, 120, 0.9)), url('https://images.unsplash.com/photo-1516549655669-df6654e447d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 14px 32px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Main Content Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Homepage Sections */
+        .home-section {
+            display: none;
+        }
+
+        .home-section.active {
+            display: block;
+        }
+
+        /* What's New Section - Updated to 2 Articles */
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .news-item {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            border-left: 5px solid var(--secondary);
+        }
+
+        .news-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .news-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .news-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .news-date {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        /* Social Media on Homepage */
+        .home-social {
+            margin-top: 60px;
+            padding: 40px;
+            background-color: var(--light);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .home-social h3 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .social-icons-home {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon-home {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s;
+            padding: 15px;
+            border-radius: 10px;
+            width: 120px;
+        }
+
+        .social-icon-home:hover {
+            background-color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon-home i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .social-icon-home .tiktok { color: #000000; }
+        .social-icon-home .youtube { color: #FF0000; }
+        .social-icon-home .facebook { color: #1877F2; }
+
+        .social-icon-home span {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section - Updated Location */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .contact-info {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .contact-item h3 {
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-link:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .call-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .call-link:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .email-link:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .location-note {
+            background-color: #fff9e6;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid var(--secondary);
+            margin-top: 10px;
+        }
+
+        /* Services Section */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border-top: 5px solid var(--primary);
+        }
+
+        .service-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            background-color: var(--light);
+            padding: 25px;
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Appointment Form */
+        .form-container {
+            max-width: 800px;
+            margin: 30px auto 0;
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .appointment-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(42, 110, 120, 0.2);
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            grid-column: span 2;
+            justify-self: center;
+            width: 200px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--dark);
+        }
+
+        /* Login Section */
+        .login-container {
+            max-width: 500px;
+            margin: 30px auto 0;
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .login-container h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .login-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .login-btn:hover {
+            background-color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        /* Social Media Section */
+        .social-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .tiktok { color: #000000; }
+        .youtube { color: #FF0000; }
+        .facebook { color: #1877F2; }
+
+        .social-card h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-column p {
+            margin-bottom: 15px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Form Success Message */
+        .form-message {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #d4edda;
+            color: #155724;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message h3 {
+            color: #155724;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .appointment-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+
+            .social-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-clinic-medical"></i>
+                Beergeel Obstetrics and Gynecology Clinic
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" id="nav-home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#" id="nav-contact"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
+                    <li><a href="#" id="nav-services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="#" id="nav-appointment"><i class="fas fa-calendar-check"></i> Appointment</a></li>
+                    <li><a href="#" id="nav-social"><i class="fas fa-share-alt"></i> Social Media</a></li>
+                    <li><a href="#" id="nav-login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Beergeel Obstetrics and Gynecology Clinic</h1>
+            <p>Providing comprehensive women's health care with compassion and expertise. Our clinic offers a full range of obstetric and gynecological services in a comfortable, caring environment.</p>
+            <a href="#" class="cta-button" id="hero-appointment">Book an Appointment</a>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        <!-- Home/What's New Section -->
+        <section id="home-section" class="home-section active">
+            <h2 class="section-title">What's New</h2>
+            <div class="news-container">
+                <div class="news-item">
+                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1516549655669-df6654e447d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="news-content">
+                        <h3>New Clinic Location</h3>
+                        <div class="news-date">April 5, 2024</div>
+                        <p>We're excited to announce our new clinic location! We are now situated just opposite Ayuub Restaurant, near Masjid Nuur. Our new facility offers more space, modern equipment, and a comfortable environment for all our patients.</p>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="news-content">
+                        <h3>Updated Working Hours</h3>
+                        <div class="news-date">April 1, 2024</div>
+                        <p>Starting this month, our clinic hours have been updated. We are now open from 4:00 PM to 9:00 PM daily, making it more convenient for working women to schedule appointments after their workday.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Media on Homepage -->
+            <div class="home-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons-home">
+                    <a href="https://www.tiktok.com/@drkhalidbeergeel?_r=1&_t=ZM-9334l9BY6iu" class="social-icon-home" target="_blank">
+                        <i class="fab fa-tiktok tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="https://youtube.com/@dr.khalidbeergeel5471?si=iZbmhEq6Ssb5tntN" class="social-icon-home" target="_blank">
+                        <i class="fab fa-youtube youtube"></i>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="https://facebook.com/beergeelclinic" class="social-icon-home" target="_blank">
+                        <i class="fab fa-facebook facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact-section" class="home-section">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone Numbers</h3>
+                            <p><strong>0634026635</strong> (Mobile/WhatsApp)</p>
+                            <p><strong>06510066</strong></p>
+                            <div class="contact-links">
+                                <a href="tel:+252634026635" class="call-link">
+                                    <i class="fas fa-phone"></i> Call 0634026635
+                                </a>
+                                <a href="tel:+2526510066" class="call-link">
+                                    <i class="fas fa-phone"></i> Call 06510066
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h3>WhatsApp</h3>
+                            <p>Chat directly with our clinic on WhatsApp</p>
+                            <div class="contact-links">
+                                <a href="https://wa.me/252634026635" class="whatsapp-link" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp Chat
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>beergeelobgyclinic@gmail.com</p>
+                            <div class="contact-links">
+                                <a href="mailto:beergeelobgyclinic@gmail.com" class="email-link">
+                                    <i class="fas fa-envelope"></i> Send Email
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3>Clinic Location & Hours</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Xero awr kasoo horjeedka Ayuub Restaurant,</p>
+                            <p>inyaar ka xiga dhanka Masjid Nuur</p>
+                            <div class="location-note">
+                                <i class="fas fa-info-circle"></i> Located opposite Ayuub Restaurant, near Masjid Nuur
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Working Hours</h3>
+                            <p><strong>4:00 PM - 9:00 PM</strong></p>
+                            <p>Open daily</p>
+                            <p>By appointment only</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-user-md"></i>
+                        <div>
+                            <h3>Dr. Khalid Beergeel</h3>
+                            <p>Specialist in Obstetrics and Gynecology</p>
+                            <p>Over 15 years of experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services-section" class="home-section">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Prenatal Care</h3>
+                        <p>Comprehensive prenatal care including regular checkups, ultrasound scans, prenatal vitamins, and personalized birth plans.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Delivery Services</h3>
+                        <p>Safe delivery services with experienced obstetricians, modern delivery rooms, and postpartum care for mother and baby.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Gynecological Exams</h3>
+                        <p>Routine gynecological exams, Pap smears, breast exams, and screening for gynecological cancers.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Fertility Services</h3>
+                        <p>Fertility assessments, counseling, and treatment options for couples trying to conceive.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Family Planning</h3>
+                        <p>Counseling and services for contraception, family planning, and reproductive health education.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Menopause Management</h3>
+                        <p>Comprehensive care for women experiencing menopausal symptoms, including hormone therapy options.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointment Section -->
+        <section id="appointment-section" class="home-section">
+            <h2 class="section-title">Book an Appointment</h2>
+            <div class="form-container">
+                <!-- FormSubmit.co Form -->
+                <form action="https://formsubmit.co/geelber0@gmail.com" method="POST" class="appointment-form" id="appointment-form">
+                    <!-- FormSubmit.co Settings -->
+                    <input type="hidden" name="_subject" value="New Appointment Request - Beergeel Clinic">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://www.beergeelclinic.com/thank-you.html">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+                    
+                    <!-- Form Fields -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="Full Name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="Age" class="form-control" required min="1" max="120">
+                    </div>
+                    <div class="form-group">
+                        <label for="sex">Sex</label>
+                        <select id="sex" name="Sex" class="form-control" required>
+                            <option value="">Select</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="Phone Number" class="form-control" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="Address" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address (Optional)</label>
+                        <input type="email" id="email" name="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Appointment Date</label>
+                        <input type="date" id="date" name="Appointment Date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time (4 PM - 9 PM)</label>
+                        <select id="time" name="Appointment Time" class="form-control" required>
+                            <option value="">Select Time</option>
+                            <option value="4-5">4:00 PM - 5:00 PM</option>
+                            <option value="5-6">5:00 PM - 6:00 PM</option>
+                            <option value="6-7">6:00 PM - 7:00 PM</option>
+                            <option value="7-8">7:00 PM - 8:00 PM</option>
+                            <option value="8-9">8:00 PM - 9:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="reason">Reason for Appointment</label>
+                        <textarea id="reason" name="Reason for Appointment" class="form-control" rows="4" placeholder="Please describe the reason for your appointment"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Book Appointment</button>
+                </form>
+                <div id="form-message" class="form-message">
+                    <h3>Appointment Request Submitted!</h3>
+                    <p>Thank you for booking an appointment. We will contact you shortly to confirm.</p>
+                    <p>If you don't hear from us within 24 hours, please call us at 0634026635.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Section -->
+        <section id="login-section" class="home-section">
+            <h2 class="section-title">Patient Portal Login</h2>
+            <div class="login-container">
+                <h3>Access Your Health Information</h3>
+                <p>Login to your patient portal to view your medical records, test results, and appointment history.</p>
+                <p>If you don't have an account yet, please contact our clinic to set up your patient portal access.</p>
+                <a href="https://www.beergeelclinic.com" class="login-btn" target="_blank">
+                    <i class="fas fa-sign-in-alt"></i> Login to Patient Portal
+                </a>
+                <div style="margin-top: 30px; padding: 20px; background-color: rgba(42, 110, 120, 0.1); border-radius: 5px;">
+                    <h4>New Patient Registration</h4>
+                    <p>If you're a new patient, please book an appointment first. After your first visit, you'll receive login credentials for the patient portal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section id="social-section" class="home-section">
+            <h2 class="section-title">Follow Us</h2>
+            <div class="social-container">
+                <div class="social-card">
+                    <div class="social-icon tiktok">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>TikTok</h3>
+                    <p>Follow Dr. Khalid Beergeel on TikTok for health tips and updates</p>
+                    <a href="https://www.tiktok.com/@drkhalidbeergeel?_r=1&_t=ZM-9334l9BY6iu" class="social-link" target="_blank">
+                        <i class="fab fa-tiktok"></i> Follow Now
+                    </a>
+                </div>
+                <div class="social-card">
+                    <div class="social-icon youtube">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube</h3>
+                    <p>Subscribe to our YouTube channel for educational health videos</p>
+                    <a href="https://youtube.com/@dr.khalidbeergeel5471?si=iZbmhEq6Ssb5tntN" class="social-link" target="_blank">
+                        <i class="fab fa-youtube"></i> Subscribe Now
+                    </a>
+                </div>
+                <div class="social-card">
+                    <div class="social-icon facebook">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <h3>Facebook</h3>
+                    <p>Like our Facebook page for clinic updates and community events</p>
+                    <a href="https://facebook.com/beergeelclinic" class="social-link" target="_blank">
+                        <i class="fab fa-facebook"></i> Like Page
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Beergeel Clinic</h3>
+                    <p>Providing exceptional obstetric and gynecological care with compassion and expertise since.</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Xero awr kasoo horjeedka Ayuub Restaurant, inyaar ka xiga dhanka Masjid Nuur</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+252634026635" style="color: white; text-decoration: none;">0634026635</a> (Mobile/WhatsApp)</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+2526510066" style="color: white; text-decoration: none;">06510066</a></p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <p><a href="#" style="color: white; text-decoration: none;" id="footer-home">Home</a></p>
+                    <p><a href="#" style="color: white; text-decoration: none;" id="footer-contact">Contact Us</a></p>
+                    <p><a href="#" style="color: white; text-decoration: none;" id="footer-services">Services</a></p>
+                    <p><a href="#" style="color: white; text-decoration: none;" id="footer-appointment">Appointment</a></p>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-clock"></i> <strong>4:00 PM - 9:00 PM</strong></p>
+                    <p>Open daily • By appointment only</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/252634026635" style="color: white; text-decoration: none;">0634026635</a></p>
+                    <p><i class="fas fa-envelope"></i> Email: beergeelobgyclinic@gmail.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Beergeel Obstetrics and Gynecology Clinic. All rights reserved.</p>
+                <p>Website: www.beergeelclinic.com | Phone: 0634026635 / 06510066</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navigation elements
+            const navHome = document.getElementById('nav-home');
+            const navContact = document.getElementById('nav-contact');
+            const navServices = document.getElementById('nav-services');
+            const navAppointment = document.getElementById('nav-appointment');
+            const navSocial = document.getElementById('nav-social');
+            const navLogin = document.getElementById('nav-login');
+            
+            // Get all footer navigation elements
+            const footerHome = document.getElementById('footer-home');
+            const footerContact = document.getElementById('footer-contact');
+            const footerServices = document.getElementById('footer-services');
+            const footerAppointment = document.getElementById('footer-appointment');
+            
+            // Get all sections
+            const homeSection = document.getElementById('home-section');
+            const contactSection = document.getElementById('contact-section');
+            const servicesSection = document.getElementById('services-section');
+            const appointmentSection = document.getElementById('appointment-section');
+            const loginSection = document.getElementById('login-section');
+            const socialSection = document.getElementById('social-section');
+            
+            // Hero CTA button
+            const heroAppointment = document.getElementById('hero-appointment');
+            
+            // Form elements
+            const appointmentForm = document.getElementById('appointment-form');
+            const formMessage = document.getElementById('form-message');
+            
+            // Function to show a specific section and hide others
+            function showSection(sectionToShow) {
+                // Hide all sections
+                const allSections = document.querySelectorAll('.home-section');
+                allSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show the selected section
+                sectionToShow.classList.add('active');
+                
+                // Scroll to the top of the section
+                window.scrollTo({
+                    top: sectionToShow.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Set up navigation click events
+            navHome.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(homeSection);
+            });
+            
+            navContact.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(contactSection);
+            });
+            
+            navServices.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(servicesSection);
+            });
+            
+            navAppointment.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(appointmentSection);
+            });
+            
+            navSocial.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(socialSection);
+            });
+            
+            navLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(loginSection);
+            });
+            
+            // Footer navigation
+            footerHome.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(homeSection);
+            });
+            
+            footerContact.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(contactSection);
+            });
+            
+            footerServices.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(servicesSection);
+            });
+            
+            footerAppointment.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(appointmentSection);
+            });
+            
+            // Hero CTA button
+            heroAppointment.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection(appointmentSection);
+            });
+            
+            // FormSubmit.co form submission
+            appointmentForm.addEventListener('submit', function(e) {
+                // Show success message immediately (FormSubmit.co will handle the actual submission)
+                formMessage.style.display = 'block';
+                appointmentForm.style.display = 'none';
+                
+                // Scroll to success message
+                formMessage.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Set minimum date for appointment to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').setAttribute('min', today);
+            
+            // Set maximum date to 3 months from now
+            const maxDate = new Date();
+            maxDate.setMonth(maxDate.getMonth() + 3);
+            const maxDateString = maxDate.toISOString().split('T')[0];
+            document.getElementById('date').setAttribute('max', maxDateString);
+            
+            // Set today as default date
+            document.getElementById('date').value = today;
+            
+            // Phone number formatting
+            const phoneInput = document.getElementById('phone');
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 0) {
+                    value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
+                }
+                e.target.value = value;
+            });
+        });
+    </script>
+</body>
+</html>
